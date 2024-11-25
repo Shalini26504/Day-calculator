@@ -1,0 +1,52 @@
+from datetime import datetime, timedelta
+    
+    new_date = date - timedelta(days=days_to_subtract)
+    print(f"\n{days_to_subtract} days before {date.date()} is {new_date.date()}.")
+
+def date_difference_in_years_months_days():
+    """Calculates the difference between two dates in years, months, and days."""
+    print("\nCalculate Difference Between Two Dates in Years, Months, and Days")
+    date1 = input_date("Enter the first date (YYYY-MM-DD): ")
+    date2 = input_date("Enter the second date (YYYY-MM-DD): ")
+    
+    if date1 > date2:
+        date1, date2 = date2, date1
+        
+    delta = date2 - date1
+    days = delta.days
+    
+    years = days // 365
+    months = (days % 365) // 30
+    remaining_days = (days % 365) % 30
+    
+    print(f"\nDifference between {date1.date()} and {date2.date()}:")
+    print(f"{years} years, {months} months, and {remaining_days} days.")
+
+def main_menu():
+    """Displays the main menu and handles user input."""
+    while True:
+        print("\nDays Calculator Menu")
+        print("1. Calculate days between two dates")
+        print("2. Add days to a date")
+        print("3. Subtract days from a date")
+        print("4. Calculate difference between two dates in years, months, and days")
+        print("5. Exit")
+        
+        choice = input("Choose an option (1-5): ")
+        
+        if choice == '1':
+            calculate_days_between_dates()
+        elif choice == '2':
+            add_days_to_date()
+        elif choice == '3':
+            subtract_days_from_date()
+        elif choice == '4':
+            date_difference_in_years_months_days()
+        elif choice == '5':
+            print("Exiting Days Calculator. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please choose a valid option (1-5).")
+
+if __name__ == "__main__":
+    main_menu()
